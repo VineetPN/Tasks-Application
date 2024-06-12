@@ -1,21 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="12dp"
     android:layout_margin="28dp"
     android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
+        android:id="@+id/add_new_task"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_margin="16dp"
-        android:layout_height="wrap_content">
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
+        android:hint="Add task"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAutofill="no"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_tasks"
-            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/add_new_task_description"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/add_new_task"
+        android:inputType="text"
+        android:hint="Add Description"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAutofill="no"/>
 
-            android:hint="New Task" />
-    </com.google.android.material.textfield.TextInputLayout>
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/ic_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="Add task details"
+        app:layout_constraintTop_toBottomOf="@id/add_new_task_description"
+        android:src="@drawable/ic_notes"
+        android:layout_marginTop="4dp"
+        android:background="@null"/>
+
+    <ImageButton
+        android:id="@+id/ic_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="star task"
+        app:layout_constraintStart_toEndOf="@id/ic_notes"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintTop_toBottomOf="@id/add_new_task_description"
+        android:src="@drawable/ic_star"
+        android:layout_marginTop="4dp"
+        android:background="@null"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ic_star"
+        app:layout_constraintBottom_toBottomOf="@id/ic_star"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Save"
+        style="@style/Widget.Material3.Button.TextButton"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
